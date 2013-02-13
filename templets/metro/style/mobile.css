@@ -1,0 +1,235 @@
+/* @the 1200px grid
+********************************************************************************************
+********************************************************************************************/
+
+.container {
+width: 100%;
+max-width: 1200px;
+margin: 0 auto;
+padding:0 0 0 0;
+overflow:hidden;
+position:relative;
+}
+
+
+.onecol, .twocol, .threecol, .fourcol, .fivecol,.fifthcol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
+margin-left:0;
+float: left;
+min-height: 1px;
+overflow:hidden;
+}
+
+.fourcol {
+width: 28%;
+padding-right:0;
+padding-left:2%;
+float:left;
+}
+
+.fifthcol,.specfifthcol,.specfifthcol_last {
+width: 17.6%;
+padding:0;
+margin:0 0 0 2.4%;
+float:left;
+margin-bottom:20px;
+overflow:hidden;
+}
+
+.specfifthcol {
+width: 37.6%;
+}
+
+.specfifthcol_last{ width:20%}
+
+.eightcol {
+width: 70%;
+padding-right:0;
+padding-left:0;
+float:left;
+}
+
+.sixcol {
+width: 50%;
+}
+
+.twelvecol {
+width: 90%;
+float: left;
+}
+
+
+
+.first {
+margin-left: 0px;
+}
+
+object, embed {
+max-width: 100%;
+}
+
+
+
+img {
+	height: auto;
+}
+
+
+/* Smaller screens */
+
+@media screen and (max-width: 1200px){
+
+.container,
+#multislider {
+width: auto;
+max-width: none;
+margin: 0 20px;
+}
+
+#multiwrap span#bg{ display:none;}
+	
+}
+
+
+@media screen and (max-width: 910px){
+
+ul#main-nav li{ width:23%; padding-left:2%;}
+	
+}
+
+
+/* Mobile */
+
+
+
+@media handheld, only screen and (max-width: 740px) {
+
+body {
+font-size: 16px;
+-webkit-text-size-adjust: none;
+}
+
+.centerrow, body,.container-out {
+width: 100%;
+min-width: 0;
+margin-left: 0px;
+margin-right: 0px;
+padding-left: 0;
+padding-right: 0;
+margin-top:0;
+}
+
+#multislider{ display:none; visibility:hidden;}
+
+
+#main-nav,
+#header,
+.onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol, .twelvecol,.fifthcol,
+#homecenter,#homecontent,#singlecontent,#homeright,.headad
+.tabitem,.etabs,.twins2col,.big_twin,.big_twin_alt,.specfifthcol,.specfifthcol_last,
+.slider_content
+ {
+width: auto;
+float: none !important;
+padding-left: 20px;
+padding-right: 20px;
+margin-left: 0;
+margin-right: 0;
+}
+
+.container {
+margin: 0 0;
+}
+
+#navigation{ position:relative !important;}
+
+.tickerwrap{ overflow:hidden; margin-bottom:20px;}
+
+.tickerwrap > span{ display:none;}
+
+.tickercontainer .mask{ left:0; width:100%;}
+
+.tickerwrap ul#social-menu{ width:60%; position:relative; float:none; margin:10px auto 25px auto; height:20px; float:none; display:block}
+
+.tickerwrap ul#social-menu li{ float:left; }
+
+#header{ position:relative;
+float:none;
+width:auto;}
+
+.twins2col,.big_twin_alt,.tabitem{ width:100%;}
+
+.tabitem{ max-height:auto !important; margin-bottom:20px;}
+
+.etabs{ padding:0 !important; margin-left:-1px !important;}
+
+.etabs li a{ height:auto;}
+
+ul#main-nav{ width:100%; padding:5px 0 0 0; margin:0 auto -10px auto;}
+
+ul#main-nav li{ width:31.333%; padding-left:2%;}
+
+#homecenter_bg,.scrollTo_top,.stuff{ display:none !important; visibility:hidden !important;}
+
+.big_twin,.small_twin,.list-post{ width:100% !important;}
+
+ul.tweet_list li{ width:70% !important;}
+
+.searchformhead{ float:none; position:relative; top:auto; right:auto; width:60%; margin:40px auto 0 auto;}
+
+.searchformhead input.s{border-left:none;}
+
+.headad img{ width:100%;}
+
+.nav li ul{ width:29.7% !important;}
+
+ul#serinfo {
+position: relative;
+z-index: 5;
+float: left;
+}
+
+.post iframe{ width:100%;}
+
+#copyright{ padding:0 5%;}
+
+
+}
+
+
+@media only screen and (max-width: 639px) {
+
+.scrollTo_top{ visibility:hidden; display:none}
+
+.centerrow .centerthreecol img{ width:auto;}
+
+.tmnf-sc-quote.left,
+.tmnf-sc-quote.right{ width:100%; float:none; margin-left:0; margin-right:0}
+
+
+.contact-form .forms textarea,
+.contact-form .forms input.txt{ width:100%; float:none; margin-left:0; margin-right:0; padding-left:0; padding-right:0}
+
+.contact-form .forms label{ margin-bottom:10px}
+
+.contact-form .forms .buttons .submit,
+.contact-form .forms input#sendCopy{ margin-left:0;}
+
+a.trigger{ display:none;}
+
+.headad{ display:none; visibility:hidden;}
+
+} 
+
+
+
+@media only screen and (max-width: 490px) {
+
+ul#main-nav li{ width:47%; padding-left:3%;}
+
+.archivepost img,.fblock img{ float:none; clear:both; margin:0 auto 10px auto !important; display:block;}
+
+.archivepost .ribbon,.archivepost .ribbon_icon{ display:none;}
+
+.list-post{ width:90% !important}
+
+}
