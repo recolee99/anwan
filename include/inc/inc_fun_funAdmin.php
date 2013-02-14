@@ -136,115 +136,28 @@ function jsScript($js)
 }
 
 /**
- *  获取编辑器
- *
+ *  获取编辑器-统一使用UEditor2.1
+ *  配置修改 /include/ueditor/editor_config.js
  * @access    public
  * @param     string  $fname 表单名称
  * @param     string  $fvalue 表单值
- * @param     string  $nheight 内容高度
- * @param     string  $etype 编辑器类型
  * @param     string  $gtype 获取值类型
- * @param     string  $isfullpage 是否全屏
  * @return    string
  */
-function SpGetEditor($fname,$fvalue,$nheight="350",$etype="Basic",$gtype="print",$isfullpage="false",$bbcode=false)
+function SpGetEditor($fname,$fvalue,$gtype="print",$bbcode=false)
 {
-    global $cfg_ckeditor_initialized;
-    if(!isset($GLOBALS['cfg_html_editor']))
+    $code = "<script type='text/javascript' charset='utf-8' src='".$GLOBALS["cfg_cmspath"]."/include/ueditor/editor_config.js'></script>
+    <script type='text/javascript' charset='utf-8' src='".$GLOBALS["cfg_cmspath"]."/include/ueditor/editor_all_min.js'></script>
+    <link rel='stylesheet' type='text/css' href='".$GLOBALS["cfg_cmspath"]."/include/ueditor/themes/default/css/ueditor.css''/>
+    <textarea name='".$fname."' id='".$fname."'>".$fvalue."</textarea>
+    <script type='text/javascript'>UE.getEditor('".$fname."');</script>";
+    if($gtype=="print")
     {
-        $GLOBALS['cfg_html_editor']='fck';
+    	echo $code;
     }
-    if($gtype=="")
+    else
     {
-        $gtype = "print";
-    }
-    if($GLOBALS['cfg_html_editor']=='fck')
-    {
-        require_once(DEDEINC.'/FCKeditor/fckeditor.php');
-        $fck = new FCKeditor($fname);
-        $fck->BasePath        = $GLOBALS['cfg_cmspath'].'/include/FCKeditor/' ;
-        $fck->Width        = '100%' ;
-        $fck->Height        = $nheight ;
-        $fck->ToolbarSet    = $etype ;
-        $fck->Config['FullPage'] = $isfullpage;
-        if($GLOBALS['cfg_fck_xhtml']=='Y')
-        {
-            $fck->Config['EnableXHTML'] = 'true';
-            $fck->Config['EnableSourceXHTML'] = 'true';
-        }
-        $fck->Value = $fvalue ;
-        if($gtype=="print")
-        {
-            $fck->Create();
-        }
-        else
-        {
-            return $fck->CreateHtml();
-        }
-    }
-    else if($GLOBALS['cfg_html_editor']=='ckeditor')
-    {
-        require_once(DEDEINC.'/ckeditor/ckeditor.php');
-        $CKEditor = new CKEditor();
-        $CKEditor->basePath = $GLOBALS['cfg_cmspath'].'/include/ckeditor/' ;
-        $config = $events = array();
-        $config['extraPlugins'] = 'dedepage,multipic,addon';
-		if($bbcode)
-		{
-			$CKEditor->initialized = true;
-			$config['extraPlugins'] .= ',bbcode';
-			$config['fontSize_sizes'] = '30/30%;50/50%;100/100%;120/120%;150/150%;200/200%;300/300%';
-			$config['disableObjectResizing'] = 'true';
-			$config['smiley_path'] = $GLOBALS['cfg_cmspath'].'/images/smiley/';
-			// 获取表情信息
-			require_once(DEDEDATA.'/smiley.data.php');
-			$jsscript = array();
-			foreach($GLOBALS['cfg_smileys'] as $key=>$val)
-			{
-				$config['smiley_images'][] = $val[0];
-				$config['smiley_descriptions'][] = $val[3];
-				$jsscript[] = '"'.$val[3].'":"'.$key.'"';
-			}
-			$jsscript = implode(',', $jsscript);
-			echo jsScript('CKEDITOR.config.ubb_smiley = {'.$jsscript.'}');
-		}
-
-        $GLOBALS['tools'] = empty($toolbar[$etype])? $GLOBALS['tools'] : $toolbar[$etype] ;
-        $config['toolbar'] = $GLOBALS['tools'];
-        $config['height'] = $nheight;
-        $config['skin'] = 'kama';
-        $CKEditor->returnOutput = TRUE;
-        $code = $CKEditor->editor($fname, $fvalue, $config, $events);
-        if($gtype=="print")
-        {
-            echo $code;
-        }
-        else
-        {
-            return $code;
-        }
-    }
-    else { 
-        /*
-        // ------------------------------------------------------------------------
-        // 当前版本,暂时取消dedehtml编辑器的支持
-        // ------------------------------------------------------------------------
-        require_once(DEDEINC.'/htmledit/dede_editor.php');
-        $ded = new DedeEditor($fname);
-        $ded->BasePath        = $GLOBALS['cfg_cmspath'].'/include/htmledit/' ;
-        $ded->Width        = '100%' ;
-        $ded->Height        = $nheight ;
-        $ded->ToolbarSet = strtolower($etype);
-        $ded->Value = $fvalue ;
-        if($gtype=="print")
-        {
-            $ded->Create();
-        }
-        else
-        {
-            return $ded->CreateHtml();
-        }
-        */
+    	return $code;
     }
 }
 

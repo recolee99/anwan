@@ -107,25 +107,23 @@ if ( ! function_exists('GetIP'))
 }
 
 /**
- *  获取编辑器
+ *  获取编辑器-统一使用UEditor2.1
  *
- * @param     string  $fname  表单名称
- * @param     string  $fvalue 如果表单中有默认值,则填入默认值
- * @param     string  $nheight 高度
- * @param     string  $etype   编辑器类型
- * @param     string  $gtype   获取类型
- * @param     string  $isfullpage   是否全屏
+ * @access    public
+ * @param     string  $fname 表单名称
+ * @param     string  $fvalue 表单值
+ * @param     string  $gtype 获取值类型
  * @return    string
  */
 if ( ! function_exists('GetEditor'))
 {
-    function GetEditor($fname, $fvalue, $nheight="350", $etype="Basic", $gtype="print", $isfullpage="FALSE",$bbcode=false)
+    function GetEditor($fname, $fvalue, $gtype="print",$bbcode=false)
     {
         if(!function_exists('SpGetEditor'))
         {
             require_once(DEDEINC."/inc/inc_fun_funAdmin.php");
         }
-        return SpGetEditor($fname, $fvalue, $nheight, $etype, $gtype, $isfullpage, $bbcode);
+        return SpGetEditor($fname, $fvalue, $gtype, $bbcode);
     }
 }
 

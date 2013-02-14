@@ -45,7 +45,6 @@ if($dopost=="addArchives")
         ShowMsg("对不起，你指的栏目可能有误！","catalog_main.php");
         exit();
     }
-
     //跳转并传递参数
     header("location:{$gurl}?channelid={$channelid}&cid={$cid}");
     exit();
