@@ -275,7 +275,7 @@ if ( ! function_exists('InsertOneTag'))
         }
         $rs = false;
         $addtime = time();
-        $row = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE tag LIKE '$tag' ");
+        $row = $dsql->GetOne("SELECT * FROM `#@__tagindex` WHERE tag = '$tag' ");
         if(!is_array($row))
         {
             $rs = $dsql->ExecuteNoneQuery(" INSERT INTO `#@__tagindex`(`tag`,`typeid`,`count`,`total`,`weekcc`,`monthcc`,`weekup`,`monthup`,`addtime`) VALUES('$tag','$typeid','0','1','0','0','$addtime','$addtime','$addtime'); ");
@@ -283,7 +283,7 @@ if ( ! function_exists('InsertOneTag'))
         }
         else
         {
-            $rs = $dsql->ExecuteNoneQuery(" UPDATE `#@__tagindex` SET total=total+1,addtime=$addtime WHERE tag LIKE '$tag' ");
+			$rs = $dsql->ExecuteNoneQuery(" UPDATE `#@__tagindex` SET total=total+1,addtime=$addtime WHERE tag = '$tag' ");
             $tid = $row['id'];
         }
         if($rs)

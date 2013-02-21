@@ -63,11 +63,11 @@ else if($dopost=='save')
     $flag = isset($flags) ? join(',',$flags) : '';
     $notpost = isset($notpost) && $notpost == 1 ? 1: 0;
     
-    if(empty($typeid2)) $typeid2 = '';
-    if(!isset($autokey)) $autokey = 0;
-    if(!isset($remote)) $remote = 0;
-    if(!isset($dellink)) $dellink = 0;
-    if(!isset($autolitpic)) $autolitpic = 0;
+    //if(empty($typeid2)) $typeid2 = '';
+    //if(!isset($autokey)) $autokey = 0;
+    //if(!isset($remote)) $remote = 0;
+    //if(!isset($dellink)) $dellink = 0;
+    //if(!isset($autolitpic)) $autolitpic = 0;
     if(empty($click)) $click = ($cfg_arc_click=='-1' ? mt_rand(50, 200) : $cfg_arc_click);
     
     if(empty($typeid))
@@ -187,9 +187,9 @@ else if($dopost=='save')
     if(preg_match("#j#", $flag)) $ismake = -1;
 
     //保存到主表
-    $query = "INSERT INTO `#@__archives`(id,typeid,typeid2,sortrank,flag,ismake,channel,arcrank,click,money,title,shorttitle,
+    $query = "INSERT INTO `#@__archives`(id,typeid,sortrank,flag,ismake,channel,arcrank,click,title,shorttitle,
     color,writer,source,litpic,pubdate,senddate,mid,voteid,notpost,description,keywords,filename,dutyadmin,weight)
-    VALUES ('$arcID','$typeid','$typeid2','$sortrank','$flag','$ismake','$channelid','$arcrank','$click','$money',
+    VALUES ('$arcID','$typeid','$sortrank','$flag','$ismake','$channelid','$arcrank','$click',
     '$title','$shorttitle','$color','$writer','$source','$litpic','$pubdate','$senddate',
     '$adminid','$voteid','$notpost','$description','$keywords','$filename','$adminid','$weight');";
 
@@ -224,6 +224,7 @@ else if($dopost=='save')
     }
     //生成HTML
     InsertTags($tags,$arcID);
+	/*
     if($cfg_remote_site=='Y' && $isremote=="1")
     {    
         if($serviterm!=""){
@@ -234,6 +235,7 @@ else if($dopost=='save')
         }
         if(!$ftp->connect($config)) exit('Error:None FTP Connection!');
     }
+	 */
 	$picTitle = false;
 	if(count($_SESSION['bigfile_info']) > 0)
 	{

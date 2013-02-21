@@ -28,7 +28,7 @@ if($t=='source')
     }
     echo "</div><div class='coolbg5'>&nbsp;</div>";
 }
-else
+if($t=='writer')
 {
     //作者列表
     $m_file = DEDEDATA."/admin/writer.txt";
@@ -46,6 +46,28 @@ else
             if($str!="")
             {
                 echo "<a href='#' onclick='javascript:PutWriter(\"$str\")'>$str</a> | ";
+            }
+        }
+    }
+    echo "</div><div class='coolbg5'>&nbsp;</div>\r\n";
+}
+if($t=='tag'){
+	//taglist
+	$m_file = DEDEDATA."/admin/tag.txt";
+	echo "<div class='coolbg4'>[<a href=\"javascript:OpenMyWin('article_tag_edit.php');ClearDivCt('mytag');\">设置</a>]&nbsp;";
+    echo "[<a href='#' onclick='javascript:HideObj(\"mytag\");ChangeFullDiv(\"hide\");'>关闭</a>]</div>\r\n<div class='wsselect'>\r\n";
+    if(filesize($m_file)>0)
+    {
+        $fp = fopen($m_file,'r');
+        $str = fread($fp,filesize($m_file));
+        fclose($fp);
+        $strs = explode(',',$str);
+        foreach($strs as $str)
+        {
+            $str = trim($str);
+            if($str!="")
+            {
+                echo "<a href='#' onclick='javascript:PutTag(\"$str\")'>$str</a> | ";
             }
         }
     }

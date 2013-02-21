@@ -19,7 +19,7 @@ $remotefile = array();
 #<s_config>
 
 $remotefile[0] = array(
-  'filedir'=>'/a',
+  'filedir'=>'/article',
   'description'=>'文档HTML默认保存路',
   'dfserv'=>0,
   'state'=>1,

@@ -106,32 +106,11 @@ function delAlbPicOld(picfile, pid){
         <table width="800" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="84" height="24" align="center" background="images/itemnote1.gif">&nbsp;常规信息&nbsp;</td>
-            <td><a href="#" onClick="ShowHide('getone')">　●输入网址采集单个网页&gt;&gt;</a></td>
+            <td><a href="#"></a></td>
           </tr>
         </table>
       </td>
     </tr>
-  </table>
-
-<table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FBFCE2" id="getone" style="<?php if(empty($geturl)) echo 'display:none'; ?>">
-  <form name="getonepage" action="article_add.php" method="get">
-  <input type="hidden" name="channelid" value="<?php echo $channelid; ?>" />
-  <input type="hidden" name="cid" value="<?php echo $cid; ?>" />
-    <tr>
-      <td colspan="2">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="150" height="31"><strong><a name="downurl"></a>&nbsp;采集单个网页-URL：</strong></td>
-            <td width="320" align="center"><input name="geturl" type="text" id="geturl" style="width:290px" value="<?php echo $geturl; ?>" /></td>
-            <td>
-            	<input type="submit" class='nbt' name="Submit3" value="抓取" />
-            	&nbsp;
-           	<input type="button" class='nbt' name="setrule" value="规则管理" onClick="OpenMyWinCoOne('article_coonepage_rule.php')" /></td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-	</form>
   </table>
 
 <form name="form1" action="article_add.php" enctype="multipart/form-data" method="post" onSubmit="return checkSubmit()">
@@ -190,7 +169,9 @@ function delAlbPicOld(picfile, pid){
       	<table width="800" border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td width="90">&nbsp;TAG标签：</td>
-          <td><input name="tags" type="text" id="tags" value="" style="width:300px" onChange="$Obj('keywords').value=this.value;" />(','号分开，单个标签小于12字节)</td>
+          <td><input name="tags" type="text" id="tags" value="" style="width:300px" />
+          	<input name="seltag" type="button" id="seltag" value="选择"/>
+          	</td>
             <td width="47">权重：</td>
             <td><input name="weight" type="text" id="weight" style="width:50px" value="<?php echo $maxWright['cc'];?>" />(越小越靠前)</td>
         </tr>
@@ -321,24 +302,6 @@ function delAlbPicOld(picfile, pid){
       		<input name="imageField" type="image" src="images/button_save.gif" width="60" height="22" class="np" border="0"  style="cursor:pointer;"/>
         </div>
       </td>
-    </tr>
-    <tr>
-      <td width="100%" height="24" colspan="2" class="bline">
-	  <table width="800" border="0" cellspacing="0" cellpadding="0">
-          <tr>
-            <td width="90">&nbsp;附加选项：</td>
-            <td>
-            	<input name="remote" type="checkbox" class="np" id="remote" value="1"<?php if($cfg_rm_remote=='Y') echo ' checked="1" '; ?> />
-              下载远程图片和资源
-              <input name="dellink" type="checkbox" class="np" id="dellink" value="1"<?php if($cfg_arc_dellink=='Y') echo ' checked="1" '; ?> />
-              删除非站内链接 <a href="javascript:OpenMyWin('article_allowurl_edit.php');">[设置]</a>
-              <input name="autolitpic" type="checkbox" class="np" id="autolitpic" value="1"<?php if($cfg_arc_autopic=='Y') echo ' checked="1" '; ?> />
-              提取第一个图片为缩略图
-              <input type='checkbox' name='needwatermark' value='1' class='np' <?php if($photo_markup=='1') echo "checked"; ?> />
-              图片是否加水印
-            </td>
-          </tr>
-        </table></td>
     </tr>
     <tr>
       <td width="100%" height="24" colspan="2" class="bline">

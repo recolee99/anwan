@@ -141,7 +141,7 @@
 
         //,imagePopup:true      //图片操作的浮层开关，默认打开
 
-        //,initialStyle:'body{font-size:18px}'   //编辑器内部样式,可以用来改变字体等
+        ,initialStyle:'body{font-size:14px}'   //编辑器内部样式,可以用来改变字体等
 
         //,emotionLocalization:false //是否开启表情本地化，默认关闭。若要开启请确保emotion文件夹下包含官网提供的images表情文件夹
 
@@ -298,7 +298,7 @@
 
         //autoFloatEnabled
         //是否保持toolbar的位置不动,默认true
-        //,autoFloatEnabled:true
+        ,autoFloatEnabled:false
         //浮动时工具栏距离浏览器顶部的高度，用于某些具有固定头部的页面
         //,topOffset:30
 

@@ -214,10 +214,14 @@ function InitPage()
 {
 	var selsource = $Obj('selsource');
 	var selwriter = $Obj('selwriter');
+	var seltag = $Obj('seltag');
 	var titlechange = $Obj('title');
 	var colorbt = $Obj('color');
 	if(selsource){ selsource.onmousedown=function(e){ SelectSource(e); } }
 	if(selwriter){ selwriter.onmousedown=function(e){ SelectWriter(e); } }
+	//yu
+	if(seltag){ seltag.onmousedown=function(e){ SelectTag(e); } }
+	
 	if(titlechange){ titlechange.onchange=function(e){ TestHasTitle(e); } }
 	if(colorbt){ colorbt.onmousedown=function(e){ ShowColor2(e); } }
 }
@@ -261,6 +265,20 @@ function PutVote(str)
         tb_remove(true);
     }
     
+}
+
+//yu
+function PutTag(str){
+	var otag = $Obj('tags');
+	if(otag){
+		if(otag.value == ''){
+			if(otag) otag.value = str;
+		}else{
+			if(otag) otag.value = otag.value+","+str;
+		}
+	}
+	$Obj('mytag').style.display = 'none';
+	ChangeFullDiv('hide');
 }
 
 function ClearDivCt(objname)
@@ -308,6 +326,12 @@ function SelectWriter(e)
 	//ChangeFullDiv('show');
 }
 
+//turbocms -yu
+function SelectTag(e){
+	LoadNewDiv(e,'article_select_sw.php?t=tag&k=8&rnd='+Math.random(), 'mytag');
+}
+
+//yu
 function LoadNewDiv(e,surl,oname)
 {
     var pxStr = '';
@@ -337,6 +361,8 @@ function LoadNewDiv(e,surl,oname)
 		newobj.className += ' dlgws';
 		newobj.style.top = posTop + pxStr;
 		newobj.style.left = posLeft + pxStr;
+		//newobj.style.width = width;
+		//newobj.style.height = height;
 		document.body.appendChild(newobj);
 	}
 	else{
